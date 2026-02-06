@@ -16,7 +16,6 @@
             color: white;
             overflow-x: hidden; /* only horizontal scroll hidden */
             overflow-y: auto; /* allow vertical scrolling */
-            height: 100%;       /* ensures proper height for scroll */
         }
 
         /* Navigation Bar - Hamburger Menu */
@@ -127,17 +126,21 @@
         /* Page Container */
         .page {
             display: none;
-            min-height: 100vh;
+            min-height: calc(100vh - 60px); /* account for navbar */
             padding-top: 60px;
             opacity: 0;
             transition: opacity 0.3s ease;
-            overflow-y: auto;  /* <--- allow vertical scrolling */
-            scroll-behavior: smooth; /* optional: smooth scrolling */
+            overflow-y: visible; /* prevent fake extra scroll */
         }
 
         .page.active {
             display: block;
             opacity: 1;
+        }
+
+        .page:last-child,
+        .page *:last-child {
+            margin-bottom: 0 !important;
         }
 
         /* Homepage Styles */
