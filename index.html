@@ -16,6 +16,7 @@
             color: white;
             overflow-x: hidden; /* only horizontal scroll hidden */
             overflow-y: auto; /* allow vertical scrolling */
+            height: 100%;       /* ensures proper height for scroll */
         }
 
         /* Navigation Bar - Hamburger Menu */
@@ -126,22 +127,17 @@
         /* Page Container */
         .page {
             display: none;
-            width: 100%;
-            height: auto;              /* 🔥 key fix */
-            padding-top: 80px;         /* navbar space */
+            min-height: 100vh;
+            padding-top: 60px;
             opacity: 0;
             transition: opacity 0.3s ease;
-            overflow: hidden;          /* 🔥 prevents fake scroll */
+            overflow-y: auto;  /* <--- allow vertical scrolling */
+            scroll-behavior: smooth; /* optional: smooth scrolling */
         }
 
         .page.active {
             display: block;
             opacity: 1;
-        }
-
-        .page:last-child,
-        .page *:last-child {
-            margin-bottom: 0 !important;
         }
 
         /* Homepage Styles */
@@ -452,16 +448,12 @@
 
         /* Teams Page Styles */
         #teams-page {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"><rect fill="%23246"/></svg>');
             background-size: cover;
         }
 
         .teams-content {
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px;
         }
@@ -473,30 +465,26 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-            justify-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
             margin-bottom: 50px;
         }
 
         .team-member {
-            background: rgba(0, 0, 0, 0.85);
-            padding: 35px 25px;
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
-            max-width: 280px;
+            transition: transform 0.3s;
         }
 
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(212, 225, 87, 0.25);
         }
 
         .member-photo {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             background: rgba(212, 225, 87, 0.2);
             border: 3px solid #D4E157;
             border-radius: 50%;
@@ -955,7 +943,7 @@
                 <!-- Team Member 1 -->
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="https://image2url.com/r2/default/images/1770274417899-8194c320-86bc-4d57-bb71-9b407d86a467.jpg" alt="Member 1">
+                        <img src="https://image2url.com/r2/default/images/1770379375562-c93f119c-52a0-42dc-aeaf-fe0867faa781.jpg" alt="Member 1">
                         <!-- Add image URL here: <img src="YOUR_IMAGE_URL" alt="Member 1"> -->
                     </div>
                     <div class="member-name">Sean Gerome Recto</div>
