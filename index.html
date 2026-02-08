@@ -356,32 +356,37 @@
             padding: 40px;
         }
 
+        /* Gallery Page Styles - Updated for Centered Layout */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive columns */
             gap: 20px;
-            justify-content: center; /* centers the whole grid horizontally */
-            justify-items: center;   /* centers items inside each grid cell */
+            justify-content: center; /* centers the grid horizontally */
+            justify-items: center;   /* centers each gallery item */
+            padding-bottom: 40px;    /* adds some space at the bottom */
         }
 
         .gallery-item {
-            max-width: 300px; /* prevents items from stretching too much */
+            max-width: 300px;       /* prevents items from stretching too much */
             width: 100%;
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .gallery-placeholder {
             width: 100%;
-            height: 300px;
+            height: 200px;          /* slightly smaller for better look */
             background: rgba(212, 225, 87, 0.2);
             border: 2px dashed #D4E157;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+             margin-bottom: 15px;
             border-radius: 5px;
             overflow: hidden;
             position: relative;
@@ -391,6 +396,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 5px;
         }
 
         .gallery-item h3 {
