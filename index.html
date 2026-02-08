@@ -1003,63 +1003,71 @@
         </div>
     </div>
 
-    <script>
+   <script>
+    function toggleMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    }
 
-        function toggleMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    function showPage(pageId) {
+        
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+
+        
+        const buttons = document.querySelectorAll('.nav-button');
+        buttons.forEach(button => button.classList.remove('active'));
+
+        
+        const selectedPage = document.getElementById(pageId);
+        if (selectedPage) selectedPage.classList.add('active');
+
+        
+        buttons.forEach(button => {
+            const buttonText = button.textContent.toLowerCase().trim();
+
+            if (pageId === 'homepage' && buttonText === 'home page') button.classList.add('active');
+            else if (pageId === 'works-page' && buttonText === 'works page') button.classList.add('active');
+            else if (pageId === 'analysis-page' && buttonText === 'analysis page') button.classList.add('active');
+            else if (pageId === 'gallery-page' && buttonText === 'gallery page') button.classList.add('active');
+            else if (pageId === 'resources-page' && buttonText === 'resources page') button.classList.add('active');
+            else if (pageId === 'teams-page' && buttonText === 'meet our team') button.classList.add('active');
+        });
+
+        
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-menu').classList.remove('active');
+
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    
+    document.addEventListener('click', function(event) {
+        const navMenu = document.querySelector('.nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+
+        const isClickInsideMenu = navMenu.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
+
+        if (!isClickInsideMenu && !isClickOnHamburger) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
         }
+    });
 
-        function showPage(pageId) {
-
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.nav-button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            // Show selected page
-            const selectedPage = document.getElementById(pageId);
-            if (selectedPage) {
-                selectedPage.classList.add('active');
-            }
-            // Find and activate the correct button
-            buttons.forEach(button => {
-                const buttonText = button.textContent.toLowerCase().trim();
-                
-                if (pageId === 'homepage' && buttonText === 'home page') {
-                    button.classList.add('active');
-                } else if (pageId === 'works-page' && buttonText === 'works page') {
-                    button.classList.add('active');
-                } else if (pageId === 'analysis-page' && buttonText === 'analysis page') {
-                    button.classList.add('active');
-                } else if (pageId === 'gallery-page' && buttonText === 'gallery page') {
-                    button.classList.add('active');
-                } else if (pageId === 'resources-page' && buttonText === 'resources page') {
-                    button.classList.add('active');
-                } else if (pageId === 'teams-page' && buttonText === 'meet our team') {
-                    button.classList.add('active');
-                }
-            });
-
-            // Close menu after selection
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            if (hamburger) hamburger.classList.remove('active');
-            if (navMenu) navMenu.classList.remove('active');
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.querySelector('.nav-menu').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
         }
-        showPage('homepage'); 
-    </script>
+    });
+
+    
+    showPage('homepage');
+</script>
 </body>
 </html>
